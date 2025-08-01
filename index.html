@@ -10,6 +10,62 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body>
+    <main class="main">
+      <div class="calculator__container">
+        <div class="screen__container">
+          <p class="secondary__screen" id="secondary-screen">0</p>
+          <p class="main__screen" id="main-screen">0</p>
+        </div>
+        <div class="button__container">
+          <div class="row">
+            <button class="button delete" id="clear">C</button>
+            <button class="button delete" id="backspace">
+              <img src="./assets/images/backspace.svg" alt="backspace button" />
+            </button>
+            <button class="button operator" data-operator>
+              <img src="./assets/images/multiply.svg" alt="multiply button" />
+              <span>*</span>
+            </button>
+          </div>
+          <div class="row">
+            <button class="button number" data-number>1</button>
+            <button class="button number" data-number>2</button>
+            <button class="button number" data-number>3</button>
+            <button class="button operator" data-operator>
+              <img src="./assets/images/divide.svg" alt="divide button" />
+              <span>/</span>
+            </button>
+          </div>
+          <div class="row">
+            <button class="button number" data-number>4</button>
+            <button class="button number" data-number>5</button>
+            <button class="button number" data-number>6</button>
+            <button class="button operator" data-operator>
+              <img src="./assets/images/plus.svg" alt="add button" />
+              <span>+</span>
+            </button>
+          </div>
+          <div class="row">
+            <button class="button" data-number>7</button>
+            <button class="button" data-number>8</button>
+            <button class="button" data-number>9</button>
+            <button class="button" data-operator>
+              <img src="./assets/images/minus.svg" alt="subtract button" />
+              <span>-</span>
+            </button>
+          </div>
+          <div class="row">
+            <button class="button number" data-number>0</button>
+            <button class="button number" id="point">
+              <img src="./assets/images/dot.svg" alt="point button" />
+            </button>
+            <button class="button operator" id="equal">
+              <img src="./assets/images/equal.svg" alt="equal button" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
