@@ -1,6 +1,7 @@
 let firstOperand = "";
 let secondOperand = "";
 let operator = null;
+let resetCalculation = false;
 
 const mainScreen = document.querySelector("#main-screen");
 const sencondaryScreen = document.querySelector("#secondary-screen");
@@ -31,7 +32,7 @@ clearButton.addEventListener("click", clear);
 
 // function
 function handleInputNumber(number) {
-  if (mainScreen.textContent === "0") {
+  if (mainScreen.textContent === "0" || resetCalculation) {
     mainScreen.textContent = number;
   } else {
     mainScreen.textContent += number;
@@ -69,6 +70,7 @@ function calculate() {
   );
   sencondaryScreen.textContent = `${firstOperand} ${operator} ${secondOperand}`;
   operator = null;
+  resetCalculation = true;
 }
 
 function mathOperations(num1, operator, num2) {
