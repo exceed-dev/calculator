@@ -149,6 +149,9 @@ function handleKeyboardInput(e) {
   if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
     handleInputOperator(e.key);
   if (e.key === "x" || e.key === "X") handleInputOperator(convertKey(e.key));
+  if (e.key === "/") {
+    e.preventDefault();
+  }
   if (e.key === "=") calculate();
   if (e.key === "Enter") calculate();
   if (e.key === ".") handleInputPoint();
