@@ -8,6 +8,7 @@ const numberButtons = document.querySelectorAll("[data-number]");
 const operatorButtons = document.querySelectorAll("[data-operator]");
 const equalButton = document.querySelector("#equal");
 const deleteButton = document.querySelector("#backspace");
+const clearButton = document.querySelector("#clear");
 
 // click event
 numberButtons.forEach((button) => {
@@ -25,6 +26,8 @@ operatorButtons.forEach((button) => {
 equalButton.addEventListener("click", calculate);
 
 deleteButton.addEventListener("click", deleteNumber);
+
+clearButton.addEventListener("click", clear);
 
 // function
 function handleInputNumber(number) {
@@ -47,6 +50,14 @@ function deleteNumber() {
   if (mainScreen.textContent === "") {
     mainScreen.textContent = "0";
   }
+}
+
+function clear() {
+  mainScreen.textContent = "0";
+  sencondaryScreen.textContent = "0";
+  firstOperand = "";
+  secondOperand = "";
+  operator = null;
 }
 
 function calculate() {

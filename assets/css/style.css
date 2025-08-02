@@ -70,6 +70,7 @@ button {
   height: 74px;
   margin-bottom: 28px;
   text-align: right;
+  overflow: hidden;
 }
 
 .main__screen {
