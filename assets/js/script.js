@@ -83,6 +83,11 @@ function round(number) {
 
 function calculate() {
   if (resetCalculation) return;
+  if (operator.trim() === "/" && mainScreen.textContent === "0") {
+    mainScreen.textContent = "Cannot be divide by zero!";
+    return;
+  }
+  console.log(mainScreen.textContent);
   secondOperand = mainScreen.textContent;
   mainScreen.textContent = round(
     mathOperations(firstOperand, operator.trim(), secondOperand)
@@ -109,7 +114,7 @@ function mathOperations(num1, operator, num2) {
       break;
     case "/":
       if (secondNumber === 0) {
-        result = `Error!`;
+        result = `Cannot be divided by zero!`;
       } else {
         result = divide(firstNumber, secondNumber);
       }

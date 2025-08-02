@@ -67,10 +67,10 @@ button {
 
 .screen__container {
   width: 270px;
-  height: 74px;
+  height: auto;
   margin-bottom: 28px;
   text-align: right;
-  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .main__screen {
