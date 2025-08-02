@@ -4,12 +4,13 @@ let operator = null;
 let resetCalculation = false;
 
 const mainScreen = document.querySelector("#main-screen");
-const sencondaryScreen = document.querySelector("#secondary-screen");
+const secondaryScreen = document.querySelector("#secondary-screen");
 const numberButtons = document.querySelectorAll("[data-number]");
 const operatorButtons = document.querySelectorAll("[data-operator]");
 const equalButton = document.querySelector("#equal");
 const deleteButton = document.querySelector("#backspace");
 const clearButton = document.querySelector("#clear");
+const pointButton = document.querySelector("#point");
 
 // click event
 numberButtons.forEach((button) => {
@@ -30,6 +31,8 @@ deleteButton.addEventListener("click", deleteNumber);
 
 clearButton.addEventListener("click", clear);
 
+pointButton.addEventListener("click", handleInputPoint);
+
 // function
 function handleInputNumber(number) {
   if (mainScreen.textContent === "0" || resetCalculation) {
@@ -43,8 +46,20 @@ function handleInputOperator(op) {
   if (operator !== null) calculate();
   firstOperand = mainScreen.textContent;
   operator = op;
-  sencondaryScreen.textContent = `${firstOperand} ${operator}`;
+  secondaryScreen.textContent = `${firstOperand} ${operator}`;
   resetCalculation = true;
+}
+
+function handleInputPoint() {
+  if (resetCalculation) {
+    mainScreen.textContent = "";
+    resetCalculation = false;
+  }
+  if (mainScreen.textContent === "") {
+    mainScreen.textContent = "0";
+  }
+  if (mainScreen.textContent.includes(".")) return;
+  mainScreen.textContent += ".";
 }
 
 function deleteNumber() {
@@ -56,7 +71,7 @@ function deleteNumber() {
 
 function clear() {
   mainScreen.textContent = "0";
-  sencondaryScreen.textContent = "0";
+  secondaryScreen.textContent = "0";
   firstOperand = "";
   secondOperand = "";
   operator = null;
@@ -70,7 +85,7 @@ function calculate() {
     operator.trim(),
     secondOperand
   );
-  sencondaryScreen.textContent = `${firstOperand} ${operator} ${secondOperand}`;
+  secondaryScreen.textContent = `${firstOperand} ${operator} ${secondOperand}`;
   operator = null;
   resetCalculation = true;
 }
@@ -92,7 +107,7 @@ function mathOperations(num1, operator, num2) {
       break;
     case "/":
       if (secondNumber === 0) {
-        result = `Cannot be divided by zero!`;
+        result = `Error!`;
       } else {
         result = divide(firstNumber, secondNumber);
       }
