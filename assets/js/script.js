@@ -33,10 +33,10 @@ clearButton.addEventListener("click", clear);
 // function
 function handleInputNumber(number) {
   if (mainScreen.textContent === "0" || resetCalculation) {
-    mainScreen.textContent = number;
-  } else {
-    mainScreen.textContent += number;
+    mainScreen.textContent = "";
+    resetCalculation = false;
   }
+  mainScreen.textContent += number;
 }
 
 function handleInputOperator(op) {
