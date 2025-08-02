@@ -66,6 +66,8 @@ button {
 }
 
 .screen__container {
+  width: 270px;
+  height: 74px;
   margin-bottom: 28px;
   text-align: right;
 }

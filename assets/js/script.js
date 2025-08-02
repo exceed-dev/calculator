@@ -7,6 +7,7 @@ const sencondaryScreen = document.querySelector("#secondary-screen");
 const numberButtons = document.querySelectorAll("[data-number]");
 const operatorButtons = document.querySelectorAll("[data-operator]");
 const equalButton = document.querySelector("#equal");
+const deleteButton = document.querySelector("#backspace");
 
 // click event
 numberButtons.forEach((button) => {
@@ -23,6 +24,8 @@ operatorButtons.forEach((button) => {
 
 equalButton.addEventListener("click", calculate);
 
+deleteButton.addEventListener("click", deleteNumber);
+
 // function
 function handleInputNumber(number) {
   if (mainScreen.textContent === "0") {
@@ -37,6 +40,13 @@ function handleInputOperator(op) {
   operator = op;
   sencondaryScreen.textContent = `${firstOperand} ${operator}`;
   mainScreen.textContent = "0";
+}
+
+function deleteNumber() {
+  mainScreen.textContent = mainScreen.textContent.slice(0, -1);
+  if (mainScreen.textContent === "") {
+    mainScreen.textContent = "0";
+  }
 }
 
 function calculate() {
