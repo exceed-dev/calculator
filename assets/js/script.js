@@ -33,6 +33,8 @@ clearButton.addEventListener("click", clear);
 
 pointButton.addEventListener("click", handleInputPoint);
 
+document.addEventListener("keydown", handleKeyboardInput);
+
 // function
 function handleInputNumber(number) {
   if (mainScreen.textContent === "0" || resetCalculation) {
@@ -140,4 +142,20 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
   return num1 / num2;
+}
+
+function handleKeyboardInput(e) {
+  if (e.key >= 0 && e.key <= 9) handleInputNumber(e.key);
+  if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
+    handleInputOperator(e.key);
+  if (e.key === "x" || e.key === "X") handleInputOperator(convertKey(e.key));
+  if (e.key === "=") calculate();
+  if (e.key === "Enter") calculate();
+  if (e.key === ".") handleInputPoint();
+  if (e.key === "Backspace") deleteNumber();
+  if (e.key == "Escape") clear();
+}
+
+function convertKey(keyboard) {
+  if (keyboard === "x" || keyboard === "X") return "*";
 }
