@@ -6,6 +6,7 @@ const mainScreen = document.querySelector("#main-screen");
 const sencondaryScreen = document.querySelector("#secondary-screen");
 const numberButtons = document.querySelectorAll("[data-number]");
 const operatorButtons = document.querySelectorAll("[data-operator]");
+const equalButton = document.querySelector("#equal");
 
 // click event
 numberButtons.forEach((button) => {
@@ -19,6 +20,8 @@ operatorButtons.forEach((button) => {
     handleInputOperator(button.textContent);
   });
 });
+
+equalButton.addEventListener("click", calculate);
 
 // function
 function handleInputNumber(number) {
@@ -40,7 +43,7 @@ function calculate() {
   secondOperand = mainScreen.textContent;
   mainScreen.textContent = mathOperations(
     firstOperand,
-    operator,
+    operator.trim(),
     secondOperand
   );
   sencondaryScreen.textContent = `${firstOperand} ${operator} ${secondOperand}`;
@@ -50,23 +53,30 @@ function calculate() {
 function mathOperations(num1, operator, num2) {
   let firstNumber = parseFloat(num1);
   let secondNumber = parseFloat(num2);
+  let result;
 
   switch (operator) {
     case "+":
-      return add(firstNumber, secondNumber);
+      result = add(firstNumber, secondNumber);
+      break;
     case "-":
-      return subtract(firstNumber, secondNumber);
+      result = subtract(firstNumber, secondNumber);
+      break;
     case "*":
-      return multiply(firstNumber, secondNumber);
+      result = multiply(firstNumber, secondNumber);
+      break;
     case "/":
       if (secondNumber === 0) {
-        return `Cannot be divided by zero!`;
+        result = `Cannot be divided by zero!`;
       } else {
-        return divide(firstNumber, secondNumber);
+        result = divide(firstNumber, secondNumber);
       }
+      break;
     default:
-      return null;
+      result = "Invalid";
   }
+
+  return result.toString();
 }
 
 function add(num1, num2) {
