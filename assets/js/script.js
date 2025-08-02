@@ -77,13 +77,15 @@ function clear() {
   operator = null;
 }
 
+function round(number) {
+  return Math.round(number * 1000) / 1000;
+}
+
 function calculate() {
   if (resetCalculation) return;
   secondOperand = mainScreen.textContent;
-  mainScreen.textContent = mathOperations(
-    firstOperand,
-    operator.trim(),
-    secondOperand
+  mainScreen.textContent = round(
+    mathOperations(firstOperand, operator.trim(), secondOperand)
   );
   secondaryScreen.textContent = `${firstOperand} ${operator} ${secondOperand}`;
   operator = null;
