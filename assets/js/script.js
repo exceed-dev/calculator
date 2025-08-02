@@ -40,10 +40,11 @@ function handleInputNumber(number) {
 }
 
 function handleInputOperator(op) {
+  if (operator !== null) calculate();
   firstOperand = mainScreen.textContent;
   operator = op;
   sencondaryScreen.textContent = `${firstOperand} ${operator}`;
-  mainScreen.textContent = "0";
+  resetCalculation = true;
 }
 
 function deleteNumber() {
@@ -62,6 +63,7 @@ function clear() {
 }
 
 function calculate() {
+  if (resetCalculation) return;
   secondOperand = mainScreen.textContent;
   mainScreen.textContent = mathOperations(
     firstOperand,
